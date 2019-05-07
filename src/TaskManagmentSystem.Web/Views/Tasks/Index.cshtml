@@ -1,0 +1,35 @@
+﻿@model IEnumerable<AppTask>
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div id="tasks">
+    <div class="topBar">
+        <a href="#" class="btn">Add new task</a>
+    </div>
+
+    <ul class="taskList">
+        @foreach (var task in Model)
+        {
+            <li>
+                <a asp-action="Details" asp-route-id="@task.Id">
+                    <span class="ti-t-l">
+                        @task.Category - @task.Id | @task.Title
+                    </span>
+                    <span class="ti-t-r">
+                        Priority: @task.Priority
+                    </span>
+                    <span class="ti-b-l">
+                        Created: @task.Created.ToString("mm/dd") | DueDate: @task.DueDate.ToString("mm/dd") | Status: @task.Status.ToString()
+                    </span>
+                    <span class="ti-b-r">
+                        Asignee: Test
+                    </span>
+                </a>
+            </li>
+        }
+    </ul>
+</div>
