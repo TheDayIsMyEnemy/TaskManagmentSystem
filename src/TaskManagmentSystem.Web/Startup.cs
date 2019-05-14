@@ -12,6 +12,8 @@ using TaskManagmentSystem.Web.Models;
 using TaskManagmentSystem.Web.Services;
 using TaskManagmentSystem.Infrastructure.Data;
 using TaskManagmentSystem.Core.Entities;
+using AutoMapper;
+using System.Reflection;
 
 namespace TaskManagmentSystem.Web
 {
@@ -24,7 +26,6 @@ namespace TaskManagmentSystem.Web
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options =>
@@ -34,13 +35,13 @@ namespace TaskManagmentSystem.Web
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
-            // Add application services.
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
