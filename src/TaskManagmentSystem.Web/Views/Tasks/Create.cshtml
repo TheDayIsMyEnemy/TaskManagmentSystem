@@ -1,0 +1,29 @@
+﻿@model TaskCreateViewModel
+
+@{
+    ViewData["Title"] = "Create task";
+}
+
+<div class="create-task">
+
+    <h2>Create a new task</h2>
+
+    <form method="post" asp-action="Create">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <label asp-for="Title"></label>
+        <input asp-for="Title" />
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" rows="20" cols="100"> </textarea>
+        <label asp-for="Status"></label>
+        <input asp-for="Status" />
+        <label asp-for="Priority"></label>
+        <input asp-for="Priority" />
+        <label asp-for="DueDate"></label>
+        <input asp-for="DueDate" />
+        <input type="submit" value="Create" class="btn" />
+    </form>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

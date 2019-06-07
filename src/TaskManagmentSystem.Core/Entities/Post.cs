@@ -12,7 +12,7 @@ namespace TaskManagmentSystem.Core.Entities
 
         public DateTime Edited { get; set; }
 
-        public int AuthorId { get; set; }
+        public string AuthorId { get; set; }
         public User Author { get; set; }
 
         public int TaskId { get; set; }

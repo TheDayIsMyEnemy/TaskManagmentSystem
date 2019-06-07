@@ -1,6 +1,11 @@
 ﻿:root {
-    --primary: #c1a99c;
+    --primary: #A2BDCA;
     --shadow: 0 1px 5px rgb(153, 128, 114, 0.8);
+    
+}
+
+a {
+    color: #dce1e2;
 }
 
 html {
@@ -10,9 +15,8 @@ html {
 }
 
 body {
-    background: #F5D6C6;
+    background: var(--primary);
     /*margin: 0;*/
-    
 }
 
 .container {
@@ -23,31 +27,31 @@ body {
     grid-template-areas: "header header header header" "nav main main main" "nav main main main" "nav main main main";
 }
 
-#mainNav {
+.mainNav {
     display: grid;
     grid-area: header;
     background: var(--primary);
     box-shadow: var(--shadow);
 }
 
-#sideNav {
+.sideNav {
     display: grid;
     grid-area: nav;
     grid-template-columns: 200px;
     grid-template-rows: repeat(4, 1fr);
-    background: var(--primary);
-    box-shadow: var(--shadow);
+    background: #42899F;
+    box-shadow: #2184a0;
 }
 
-#main {
+.main {
     display: grid;
     grid-area: main;
-    background: #d6beb1;
+    background: var(--primary);
     box-shadow: var(--shadow);
-    max-height: 900px;
+    
 }
 
-#sideNav ul {
+.sideNav ul {
     margin: 0;
     display: grid;
     grid-gap: 1px;
@@ -56,32 +60,27 @@ body {
     grid-template-columns: 200px;
     /*width: 100%;
     align-items: start;*/
-    box-shadow: var(--shadow);
+
 }
 
 
-#sideNav a {
+.sideNav a {
     text-align: center;
-    background: #ad998e;
-    color: black;
+    background: #0A4C5F;
+
     display: block;
     text-decoration: none;
     padding: 1.1rem;
 }
 
-#mainNav ul {
+.mainNav ul {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
     grid-gap: 2px;
     padding: 0;
     margin:0 ;
     list-style: none;
-
 }
 
-#mainNav a {
-    color: #2a354b;
-}
 
 /*Index*/
 
@@ -91,6 +90,7 @@ body {
     grid-template-rows: 50px 50px 1fr;
     margin: 10px;
     grid-gap: 10px;
+
 }
 
 .topBar {
@@ -100,54 +100,61 @@ body {
     
 }
 
+.search {
+    background: #ceb9ad;
+}
+
 
 .taskList {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(6, 100px);
+    grid-template-rows: repeat(6, 120px);
+    grid-gap: 10px;
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
     .taskList li {
-    }
-
-    .taskList a {
-        border-style: solid;
-        border-width: 1px;
-        border-color: #a5968e;
-        color: black;
-        display: block;
-        text-decoration: none;
-        padding: 1rem;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        grid-row-gap: 15px;
-        background: #ceb9ad;
-        box-shadow: var(--shadow);
+        background-color: #04232D;
     }
 
-        .taskList a:hover {
-            background: #ad9f98;
-        }
+    .taskItem {
+        display: grid;
 
+    }
 
+.taskList a {
+    background: #04232D;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #a5968e;
 
-.ti-t-r {
-    justify-self: end;
+    display: block;
+    text-decoration: none;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    box-shadow: var(--shadow);
+    justify-items: start;
+    align-items: start;
 }
 
-.ti-b-r {
-    justify-self: end;
-}
+    .taskList a:hover {
+        background: #144e60;
+    }
 
+.search {
+    background-color: #42899F;
+    color: white;
+}
 /*    */
 
 .btn {
-    background: #ad998e;
-    color: black;
+    background: #42899F;
+    color: white;
     /* 1rem = 16px */
     padding: 0.6rem 1.3rem;
     text-decoration: none;
@@ -166,6 +173,30 @@ body {
     margin-right: 10px;
 }
 
-#sideNav a:hover {
+.sideNav a:hover {
+    background: #2184a0;
+}
+
+.create-task {
+    display:grid;
+  
+    justify-items: center;
+}
+
+.create-task form {
+    display: grid;
+    justify-items: center;
+   
+}
+
+.create-task a:hover {
     background: #8c7c74;
+}
+
+.create-task h2 {
+white-space: nowrap;
+}
+
+.create-task label {
+   margin-top: 25px;
 }

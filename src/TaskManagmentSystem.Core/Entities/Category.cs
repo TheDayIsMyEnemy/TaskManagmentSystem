@@ -6,6 +6,6 @@ namespace TaskManagmentSystem.Core.Entities
     {
         public string Name { get; set; }
 
-        public List<AppTask> Tasks { get; set; }
+        public List<TaskCategory> Tasks { get; set; } = new List<TaskCategory>();
     }
 }

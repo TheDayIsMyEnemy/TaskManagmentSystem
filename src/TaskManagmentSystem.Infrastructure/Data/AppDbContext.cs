@@ -11,12 +11,48 @@ namespace TaskManagmentSystem.Infrastructure.Data
             : base(options)
         {
         }
+        
+        public DbSet<AppTask> Tasks { get; set; }
+        
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Post> Posts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
             builder.Entity<AppTask>(ConfigureTask);
+            builder.Entity<Post>(ConfigurePost);
+            builder.Entity<TaskCategory>(ConfigureTaskCategory);
+            builder.Entity<Category>(ConfigureCategory);
+
+
+        }
+
+        private void ConfigureCategory(EntityTypeBuilder<Category> builder)
+        {
+            builder
+                .Property(c => c.Name)
+                .HasMaxLength(50)
+                .IsRequired(true);
+
+        }
+
+        private void ConfigureTaskCategory(EntityTypeBuilder<TaskCategory> builder)
+        {
+            builder
+                .HasKey(k => new { k.TaskId, k.CategoryId });
+
+            builder
+                .HasOne(tk => tk.Task)
+                .WithMany(t => t.Categories)
+                .HasForeignKey(tk => tk.TaskId);
+
+            builder
+                .HasOne(tk => tk.Category)
+                .WithMany(c => c.Tasks)
+                .HasForeignKey(c => c.CategoryId);
         }
 
         private void ConfigurePost(EntityTypeBuilder<Post> builder)
@@ -47,9 +83,16 @@ namespace TaskManagmentSystem.Infrastructure.Data
                 .HasForeignKey(t => t.CreatorId);
 
             builder
-                .HasOne(t => t.Category)
-                .WithMany(c => c.Tasks)
-                .HasForeignKey(t => t.CategoryId);
+                .Property(t => t.Title)
+                .HasMaxLength(50)
+                .IsRequired(true);
+
+            builder
+                .Property(t => t.Description)
+                .HasMaxLength(250)
+                .IsRequired(true);
+
+
         }
     }
 }
