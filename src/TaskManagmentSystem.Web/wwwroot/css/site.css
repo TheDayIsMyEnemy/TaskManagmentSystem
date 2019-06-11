@@ -80,10 +80,13 @@ body {
 
 /*Index*/
 
-#tasks {
+.tasks {
     display: grid;
     margin: 10px;
     grid-gap: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px 60px auto 40px;
+
 }
 
 .topBar {
@@ -92,15 +95,12 @@ body {
     box-shadow: var(--shadow);
 }
 
-.search {
-    background: #ceb9ad;
-}
 
 
 .taskList {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(6, 120px);
+    grid-template-rows: repeat(6, 100px);
     grid-gap: 10px;
     margin: 0;
     padding: 0;
@@ -109,7 +109,7 @@ body {
 
     .taskList li {
         display: grid;
-        background-color: #04232D;
+
     }
 
 .taskItem {
@@ -140,7 +140,6 @@ body {
     background-color: #42899F;
     color: white;
     padding: 6px;
-    margin-top: 8px;
     font-size: 17px;
     border: none;
 }
@@ -158,17 +157,17 @@ body {
 .search-container button:hover {
     background: #ccc;
 }
-/*    */
 
-.btn {
+.btnCreateTask {
     background: #42899F;
     color: white;
     /* 1rem = 16px */
-    padding: 0.6rem 1.3rem;
+    padding: 0.6rem 1.3rem; 
     text-decoration: none;
     border: 0;
     box-shadow: var(--shadow);
-    width: 120px;
+    max-width: 100px;
+    max-height: 25px;
 }
 
 .nav-profile {
@@ -194,11 +193,6 @@ body {
         display: grid;
         justify-items: center;
     }
-
-#btnCreateTask {
-    margin-top: 25px;
-    margin-bottom: 25px;
-}
 
 .create-task h2 {
     white-space: nowrap;
