@@ -6,6 +6,11 @@
       "provider": "cdnjs",
       "library": "jquery@3.4.1",
       "destination": "wwwroot/lib/jquery/"
+    },
+    {
+      "provider": "unpkg",
+      "library": "@aspnet/signalr@3.0.0-preview5-19227-01",
+      "destination": "wwwroot/lib/@aspnet/signalr/"
     }
   ]
 }

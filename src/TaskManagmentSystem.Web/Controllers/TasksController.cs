@@ -12,7 +12,8 @@ using TaskManagmentSystem.Web.Filters;
 using TaskManagmentSystem.Web.Models;
 using TaskManagmentSystem.Web.ViewModels.Tasks;
 using TaskManagmentSystem.Core.DTOs;
-
+using TaskManagmentSystem.Web.ViewModels;
+using static TaskManagmentSystem.Web.Constants;
 
 namespace TaskManagmentSystem.Web.Controllers
 {
@@ -26,16 +27,31 @@ namespace TaskManagmentSystem.Web.Controllers
             this.taskService = taskService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Search(SearchInfoViewModel searchInfo)
         {
-            var list = new List<AppTask>();
+            return PartialView("_TaskListPartial", await taskService.List(1, 6));
+        }
 
-            for (int i = 1; i <= 3; i++)
+        public async Task<IActionResult> Index(int page = 1)
+        {
+            int taskCount = await taskService.GetTaskCountAsync();
+            int totalPages = (int)Math.Ceiling((decimal)taskCount / TasksPageSize);
+            page = page < 1 ? 1 : page > totalPages ? totalPages : page;
+
+            var paginationInfo = new PaginationInfoViewModel
             {
-                list.Add(new AppTask { Id = i, Title = $"App Task {i}", Status = (Core.Entities.TaskStatus)i
-                    , Priority = (TaskPriority)i});
-            }
-            return View(list);
+                ItemsPerPage = TasksPageSize,
+                CurrentPage = page,
+                TotalItems = taskCount
+            };
+
+            var result = new TasksIndexViewModel
+            {
+                Tasks = await taskService.List(page, TasksPageSize),
+                PaginationInfo = paginationInfo
+            };
+
+            return View(result);
         }
 
         public async Task<IActionResult> Details(int id)

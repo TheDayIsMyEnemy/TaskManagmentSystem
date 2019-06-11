@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using TaskManagmentSystem.Common.Mappings;
 using TaskManagmentSystem.Core.Entities;
 
 namespace TaskManagmentSystem.Core.DTOs
 {
-    public class TaskDto
+    public class TaskDto : IMapFrom<AppTask>
     {
+        public int Id { get; set; }
+
         public string Title { get; set; }
 
         public string Description { get; set; }

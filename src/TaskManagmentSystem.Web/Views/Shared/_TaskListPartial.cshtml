@@ -1,0 +1,23 @@
+﻿@model IEnumerable<TaskDto>
+
+<ul class="taskList">
+    @foreach (var task in Model)
+    {
+        <li>
+            <a asp-action="Details" asp-route-id="@task.Id">
+                <span class="taskItem">
+                    @task.Id | @task.Title
+                </span>
+                <span class="taskItem">
+                    Priority: @task.Priority
+                </span>
+                <span class="taskItem">
+                    Created: @task.Created.ToString("mm/dd") | DueDate: @task.DueDate | Status: @task.Status.ToString()
+                </span>
+                <span class="taskItem">
+                    Asignee: Test
+                </span>
+            </a>
+        </li>
+    }
+</ul>

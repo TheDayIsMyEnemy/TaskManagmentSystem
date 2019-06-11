@@ -36,9 +36,12 @@ namespace TaskManagmentSystem.Core.Services
         }
 
         public async Task<TaskDto> GetByIdAsync(int id)
-        {
-            AppTask task = await tasks.GetByIdAsync(id);
-            return mapper.Map<TaskDto>(task);
-        }
+            => mapper.Map<TaskDto>(await tasks.GetByIdAsync(id));
+
+        public async Task<int> GetTaskCountAsync()
+            => await tasks.CountAsync();
+
+        public async Task<IEnumerable<TaskDto>> List(int page, int pageSize)
+            => mapper.Map<IEnumerable<TaskDto>>(await tasks.List(page, pageSize));
     }
 }

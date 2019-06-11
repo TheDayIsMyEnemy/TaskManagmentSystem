@@ -1,0 +1,10 @@
+﻿@model PaginationInfoViewModel
+
+<div class="pagination">
+    <a asp-action="Index" asp-route-page="@Model.PreviousPage" class="previousPage @(Model.CurrentPage == 1 ? "disabled" : "")">&laquo;</a>
+    @for (int i = 1; i <= Model.TotalPages; i++)
+    {
+        <a asp-action="Index" asp-route-page="@i" class="@(i == Model.CurrentPage ? "selected" : "")">@i</a>
+    }
+    <a asp-action="Index" asp-route-page="@Model.NextPage" class="nextPage @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">&raquo;</a>
+</div>

@@ -10,7 +10,7 @@ namespace TaskManagmentSystem.Core.Entities
 
         public string Lastname { get; set; }
 
-        public DateTime Birthdate { get; set; }
+        public DateTime? Birthdate { get; set; }
 
         public List<AppTask> CreatedTasks { get; set; } = new List<AppTask>();
 

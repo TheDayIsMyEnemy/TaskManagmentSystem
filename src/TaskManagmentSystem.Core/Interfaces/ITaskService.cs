@@ -11,5 +11,7 @@ namespace TaskManagmentSystem.Core.Interfaces
     {
         Task<TaskDto> GetByIdAsync(int id);
         Task<int> CreateTaskAsync(string title, string description, Entities.TaskStatus status, TaskPriority priority, DateTime? dueDate);
+        Task<int> GetTaskCountAsync();
+        Task<IEnumerable<TaskDto>> List(int page, int pageSize);
     }
 }

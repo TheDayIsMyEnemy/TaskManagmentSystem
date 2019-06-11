@@ -1,34 +1,32 @@
-﻿@model IEnumerable<AppTask>
-
+﻿@model TasksIndexViewModel
 
 @{
-    ViewData["Title"] = "Task list";
+    ViewData["Title"] = "Tasks";
 }
 
-
 <div id="tasks">
-    <input value="Search" class="search"/>
+    <div class="search-container">
+        <form asp-action="Search">
+            <input asp-for="SearchInfo.SearchText" value="Search" asp-action="Search" />
+            <button type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+
+
     <a asp-action="Create" class="btn">Create task</a>
 
-    <ul class="taskList">
-        @foreach (var task in Model)
-        {
-            <li>
-                <a asp-action="Details" asp-route-id="@task.Id">
-                    <span class="taskItem">
-                        @task.Id | @task.Title
-                    </span>
-                    <span class="taskItem">
-                        Priority: @task.Priority
-                    </span>
-                    <span class="taskItem">
-                        Created: @task.Created.ToString("mm/dd") | DueDate: @task.DueDate | Status: @task.Status.ToString()
-                    </span>
-                    <span class="taskItem">
-                        Asignee: Test
-                    </span>
-                </a>
-            </li>
-        }
-    </ul>
+    @if (Model.Tasks.Count() > 0)
+    {
+        @await Html.PartialAsync("_TaskListPartial", Model.Tasks)
+    }
+    else
+    {
+        <p>There are no tasks.</p>
+    }
+    @if (Model.PaginationInfo.TotalPages > 1)
+    {
+        @await Html.PartialAsync("_PaginationPartial", Model.PaginationInfo)
+    }
 </div>

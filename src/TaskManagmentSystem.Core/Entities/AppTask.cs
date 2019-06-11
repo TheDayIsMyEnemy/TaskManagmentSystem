@@ -25,7 +25,7 @@ namespace TaskManagmentSystem.Core.Entities
 
         public List<Post> Posts { get; set; } = new List<Post>();
 
-        public List<TaskCategory> Categories { get; set; } = new List<TaskCategory>();
+        public List<CategoryTask> Categories { get; set; } = new List<CategoryTask>();
 
         // add projects
     }

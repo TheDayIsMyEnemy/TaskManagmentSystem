@@ -18,13 +18,15 @@ namespace TaskManagmentSystem.Infrastructure.Data
 
         public DbSet<Post> Posts { get; set; }
 
+        public DbSet<CategoryTask> TasksInCategories { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
             builder.Entity<AppTask>(ConfigureTask);
             builder.Entity<Post>(ConfigurePost);
-            builder.Entity<TaskCategory>(ConfigureTaskCategory);
+            builder.Entity<CategoryTask>(ConfigureCategoryTask);
             builder.Entity<Category>(ConfigureCategory);
 
 
@@ -39,7 +41,7 @@ namespace TaskManagmentSystem.Infrastructure.Data
 
         }
 
-        private void ConfigureTaskCategory(EntityTypeBuilder<TaskCategory> builder)
+        private void ConfigureCategoryTask(EntityTypeBuilder<CategoryTask> builder)
         {
             builder
                 .HasKey(k => new { k.TaskId, k.CategoryId });

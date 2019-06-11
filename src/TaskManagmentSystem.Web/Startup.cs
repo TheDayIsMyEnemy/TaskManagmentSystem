@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TaskManagmentSystem.Core.Interfaces;
 using TaskManagmentSystem.Core.Services;
+using TaskManagmentSystem.Web.Hubs;
 
 namespace TaskManagmentSystem.Web
 {
@@ -64,9 +65,11 @@ namespace TaskManagmentSystem.Web
                 options.Filters.Add(new AuthorizeFilter(policy));
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
             });
+
+            services.AddSignalR();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, AppDbContext context)
         {
             if (env.IsDevelopment())
             {
@@ -81,6 +84,12 @@ namespace TaskManagmentSystem.Web
             app.UseStaticFiles();
 
             app.UseAuthentication();
+            app.UseCookiePolicy();
+            app.UseHttpsRedirection();
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<ChatHub>("/chatHub");
+            });
 
             app.UseMvc(routes =>
             {
@@ -90,9 +99,16 @@ namespace TaskManagmentSystem.Web
                     defaults: new { controller = "Tasks", action = "Details" });
 
                 routes.MapRoute(
+                    name: "taskList",
+                    template: "Tasks/page/{page}",
+                    defaults: new { controller = "Tasks", action = "Index"} );
+
+                routes.MapRoute(
                     name: "default",
-                    template: "{controller=Tasks}/{action=Index}/{id?}");
+                    template: "{controller=Tasks}/{action=Index}/{id?}");   
             });
+
+            DbInitializer.Seed(app);
         }
     }
 }
