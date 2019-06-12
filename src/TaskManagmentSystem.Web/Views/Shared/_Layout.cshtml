@@ -14,31 +14,29 @@
 </head>
 <body>
     <div class="container">
-        <nav class="mainNav">
+        <header class="header">
             <form method="post" asp-action="Logout" asp-controller="Account">
-                <ul>
-                    <li>
-                        <a asp-action="Index" asp-controller="Manage"><i class="fas fa-user-circle fa-2x"></i></a>
-                    </li>
-                    <li>
-                        <button type="submit"><i class="fas fa-sign-out-alt fa-2x"></i></button>
-                    </li>
-                </ul>
+                <div>
+                    <a asp-action="Index" asp-controller="Manage"><i class="fas fa-user-circle fa-2x"></i></a>
+                </div>
+                <div>
+                    <button type="submit"><i class="fas fa-sign-out-alt fa-2x"></i></button>
+                </div>
             </form>
-        </nav>
-        <div class="sideNav">
+        </header>
+        <aside class="sidenav">
             <ul>
                 <li><a asp-action="Index" asp-controller="Tasks">Tasks</a></li>
                 <li><a asp-action="Index" asp-controller="Chat">Chat</a></li>
                 <li><a href="#">Employee Directory</a></li>
                 <li><a href="#">Admin</a></li>
             </ul>
-        </div>
-        <section class="main">
+        </aside>
+        <main class="main">
 
             @RenderBody()
 
-        </section>
+        </main>
 
     </div>
     <environment include="Development">

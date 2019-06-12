@@ -15,32 +15,41 @@ html {
 
 body {
     background: var(--primary);
-    /*margin: 0;*/
+    margin: 0;
 }
 
 .container {
     display: grid;
+    grid-template-columns: 180px 1fr;
+    grid-template-rows: 75px 1fr;
+    grid-template-areas:
+        "sidenav header"
+        "sidenav main";
     grid-gap: 10px;
-    grid-template-columns: 200px 1fr 1fr 1fr;
+    height: 100vh;
+    /*grid-gap: 10px;
+    grid-template-columns: minmax(12rem, 6rem)  1fr 1fr 1fr;
     grid-template-rows: auto;
-    grid-template-areas: "header header header header" "nav main main main" "nav main main main" "nav main main main";
+    grid-template-areas: "header header header header" "nav main main main" "nav main main main" "nav main main main";*/
 }
 
-.mainNav {
+.header {
     display: grid;
     grid-area: header;
+    grid-template-columns: 1fr;
     background: var(--primary);
     box-shadow: var(--shadow);
 }
 
-.sideNav {
-    display: grid;
-    grid-area: nav;
-    grid-template-columns: 200px;
-    grid-template-rows: repeat(4, 1fr);
-    background: #42899F;
-    box-shadow: #2184a0;
-}
+    .header form {
+     
+        display: grid;
+        grid-area: header;
+        justify-items: end;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 50px 50px;
+       
+    }
 
 .main {
     display: grid;
@@ -49,36 +58,35 @@ body {
     box-shadow: var(--shadow);
 }
 
-.sideNav ul {
-    margin: 0;
+.sidenav {
     display: grid;
-    grid-gap: 1px;
-    padding: 0;
-    list-style: none;
-    grid-template-columns: 200px;
-    /*width: 100%;
-    align-items: start;*/
+    grid-area: sidenav;
+    grid-template-rows: repeat(4, 180px);
+    background-color: #394263;
+    box-shadow: #2184a0;
 }
 
-
-.sideNav a {
-    text-align: center;
-    background: #0A4C5F;
-    display: block;
-    text-decoration: none;
-    padding: 1.1rem;
-}
-
-.mainNav ul {
-    display: grid;
-    grid-gap: 2px;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
+    .sidenav ul {
+        display: grid;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        list-style: none;
+    }
 
 
-/*Index*/
+
+    .sidenav a {
+        text-align: center;
+        background: #0A4C5F;
+        display: block;
+        text-decoration: none;
+        padding: 0.7rem;
+    }
+        .sidenav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+        }
 
 .tasks {
     display: grid;
@@ -94,8 +102,6 @@ body {
     background: #ceb9ad;
     box-shadow: var(--shadow);
 }
-
-
 
 .taskList {
     display: grid;
@@ -117,7 +123,7 @@ body {
 }
 
 .taskList a {
-    background: #043747;
+    background: #394263;
     border-style: solid;
     border-width: 1px;
     border-color: #a5968e;
@@ -170,19 +176,7 @@ body {
     max-height: 25px;
 }
 
-.nav-profile {
-    grid-column: 4;
-    justify-self: end;
-    padding-right: 20px;
-}
 
-#profileLogo {
-    margin-right: 10px;
-}
-
-.sideNav a:hover {
-    background: #2184a0;
-}
 
 .create-task {
     display: grid;
