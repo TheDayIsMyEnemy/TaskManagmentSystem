@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace TaskManagmentSystem.Web.Controllers
 {
-    public class HomeController
+    public class HomeController : Controller
     {
-        public void Index()
+        public IActionResult Index()
         {
-
+            return View();
         }
     }
 }

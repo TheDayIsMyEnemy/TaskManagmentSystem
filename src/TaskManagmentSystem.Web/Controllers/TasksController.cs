@@ -63,8 +63,11 @@ namespace TaskManagmentSystem.Web.Controllers
                 return NotFound();
                 // return Error View
             }
-
-            return View(task);
+            var model = new TaskDetailsViewModel
+            {
+                Task = task
+            };
+            return View(model);
         }
 
         public IActionResult Create()

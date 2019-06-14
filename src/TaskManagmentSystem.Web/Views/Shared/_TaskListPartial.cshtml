@@ -5,18 +5,33 @@
     {
         <li>
             <a asp-action="Details" asp-route-id="@task.Id">
-                <span class="taskItem">
-                    @task.Id | @task.Title
-                </span>
-                <span class="taskItem">
-                    Priority: @task.Priority
-                </span>
-                <span class="taskItem">
-                    Created: @task.Created.ToString("mm/dd") | DueDate: @task.DueDate | Status: @task.Status.ToString()
-                </span>
-                <span class="taskItem">
-                    Asignee: Test
-                </span>
+                <div class="taskItem">
+                    <div>
+                        @task.Id | @task.Title
+                    </div>
+                    <div>
+                        Created: @task.Created.ToString("mm/dd")
+                       
+                    </div>
+                </div>
+                <div class="taskItem">
+                    <div>
+                        Priority: @task.Priority
+                        
+                    </div>
+                    <div>
+                        Due: @(task.DueDate.HasValue ? task.DueDate.Value.ToString("MM/dd/yyyy HH:mm") : "Whenever")
+                    </div>
+                </div>
+                <div class="taskItem">
+                    <div>
+                        Status: @task.Status.ToString()
+                    </div>
+                    <div>
+                        Asignee: Test
+                    </div>
+                    
+                </div>
             </a>
         </li>
     }

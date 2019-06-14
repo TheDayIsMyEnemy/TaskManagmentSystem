@@ -72,7 +72,7 @@ namespace TaskManagmentSystem.Infrastructure.Data
 
         private void ConfigureTask(EntityTypeBuilder<AppTask> builder)
         {
-            builder.ToTable("Task");
+            builder.ToTable("Tasks");
 
             builder
                 .HasOne(t => t.Assignee)

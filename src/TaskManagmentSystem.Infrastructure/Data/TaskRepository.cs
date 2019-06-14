@@ -16,6 +16,7 @@ namespace TaskManagmentSystem.Infrastructure.Data
                 .OrderByDescending(t => t.Id)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
+                .AsNoTracking()
                 .ToListAsync();
 
 

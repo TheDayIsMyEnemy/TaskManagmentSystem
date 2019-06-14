@@ -10,7 +10,7 @@ using TaskManagmentSystem.Infrastructure.Data;
 namespace TaskManagmentSystem.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190609151304_Initial")]
+    [Migration("20190612172951_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -163,7 +163,7 @@ namespace TaskManagmentSystem.Infrastructure.Migrations
 
                     b.HasIndex("CreatorId");
 
-                    b.ToTable("Task");
+                    b.ToTable("Tasks");
                 });
 
             modelBuilder.Entity("TaskManagmentSystem.Core.Entities.Category", b =>

@@ -161,7 +161,7 @@ namespace TaskManagmentSystem.Infrastructure.Migrations
 
                     b.HasIndex("CreatorId");
 
-                    b.ToTable("Task");
+                    b.ToTable("Tasks");
                 });
 
             modelBuilder.Entity("TaskManagmentSystem.Core.Entities.Category", b =>

@@ -7,15 +7,18 @@
 <div class="tasks">
     <div class="search-container">
         <form asp-action="Search">
-            <input asp-for="SearchInfo.SearchText" value="Search" asp-action="Search" />
+            <input asp-for="SearchInfo.SearchText" placeholder="Search" asp-action="Search" />
             <button type="submit">
                 <i class="fa fa-search"></i>
             </button>
+            <div>
+                <label></label>
+            </div>
         </form>
     </div>
 
 
-    <a asp-action="Create" class="btnCreateTask">Create task</a>
+    <a asp-action="Create" class="btn">Create task</a>
 
     @if (Model.Tasks.Count() > 0)
     {

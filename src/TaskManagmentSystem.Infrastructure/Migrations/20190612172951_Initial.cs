@@ -170,7 +170,7 @@ namespace TaskManagmentSystem.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Task",
+                name: "Tasks",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -186,15 +186,15 @@ namespace TaskManagmentSystem.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Task", x => x.Id);
+                    table.PrimaryKey("PK_Tasks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Task_AspNetUsers_AssigneeId",
+                        name: "FK_Tasks_AspNetUsers_AssigneeId",
                         column: x => x.AssigneeId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Task_AspNetUsers_CreatorId",
+                        name: "FK_Tasks_AspNetUsers_CreatorId",
                         column: x => x.CreatorId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -223,9 +223,9 @@ namespace TaskManagmentSystem.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Posts_Task_TaskId",
+                        name: "FK_Posts_Tasks_TaskId",
                         column: x => x.TaskId,
-                        principalTable: "Task",
+                        principalTable: "Tasks",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -247,9 +247,9 @@ namespace TaskManagmentSystem.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_TasksInCategories_Task_TaskId",
+                        name: "FK_TasksInCategories_Tasks_TaskId",
                         column: x => x.TaskId,
-                        principalTable: "Task",
+                        principalTable: "Tasks",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -304,13 +304,13 @@ namespace TaskManagmentSystem.Infrastructure.Migrations
                 column: "TaskId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Task_AssigneeId",
-                table: "Task",
+                name: "IX_Tasks_AssigneeId",
+                table: "Tasks",
                 column: "AssigneeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Task_CreatorId",
-                table: "Task",
+                name: "IX_Tasks_CreatorId",
+                table: "Tasks",
                 column: "CreatorId");
 
             migrationBuilder.CreateIndex(
@@ -349,7 +349,7 @@ namespace TaskManagmentSystem.Infrastructure.Migrations
                 name: "Categories");
 
             migrationBuilder.DropTable(
-                name: "Task");
+                name: "Tasks");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
