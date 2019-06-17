@@ -182,74 +182,40 @@ body {
     max-height: 25px;
 }
 
-.create-task form label {
-    margin: 0;
-}
 
 
 .create-task {
     display: grid;
-    
+    grid-template-rows: 50px 1fr;
+    place-items: center;
    
 }
 
-    /*.create-task form {
-       display:grid;
-       grid-template-columns: repeat(1, minmax(240px, 1fr));
-       grid-gap: 1rem;
-    }*/
+    h2 {
+        margin: 0;
+        padding: 0;
+        line-height: 1.6rem;
+    }
 
     .create-task form {
         display: grid;
-        grid-template-columns: 120px 1rem 1fr;
-        align-items: center;
-        grid-gap: 16px;
+        place-content: center;
+           
     }
 
-
-input, output, textarea, select, button {
-    grid-column: 2 / 4;
-    max-width: 240px;
-    margin: 0;
-}
-
-input[type="checkbox"], input[type="radio"] {
-    grid-column: 1 / 3;
-    justify-self: end;
-    margin: 0;
-}
-
-    label, input[type="checkbox"] + label, input[type="radio"] + label {
-        width: auto;
-        padding: 0;
-        margin: 0;
-    }
-textarea + label {
-    align-self: start;
-}
-
-.text-danger {
-    grid-column: 1 / 4 ;  
-}
-
-
-
-
-    /*.create-task form label {
-        grid-column: 1 / 2;
+    .create-task form label {
+        margin-top: 1rem;
     }
 
-    .create-task form input, button {
-        grid-column: 2 / 3;
-    }*/
+        .create-task form button {
+            background: #42899F;
+            color: white;
+            border: 0;
+            justify-self: center;
+            margin-top: 1rem;
+            padding: 1rem;
 
-.create-task h2 {
-    white-space: nowrap;
-}
-
-.create-task label {
-    margin-top: 25px;
-}
+        }
 
 .pagination {
     display: grid;
