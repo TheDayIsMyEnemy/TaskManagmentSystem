@@ -4,6 +4,23 @@
     ViewData["Title"] = "Tasks";
 }
 
+<script>
+
+    $(document).ready(function () {
+        var element = $('create-task');
+        $('.btn').click(function (event) {
+            var url = $(this).data('url');
+            $.get(url).done(function (data) {
+                console.log(data);
+                element.html(data);
+                element.show();
+            });
+        });
+    });
+
+
+</script>
+
 <div class="tasks">
     <div class="search-container">
         <form asp-action="Search">
@@ -18,7 +35,11 @@
     </div>
 
 
-    <a asp-action="Create" class="btn">Create task</a>
+    <button class="btn" data-url="@Url.Action("Create")">Create task</button>
+
+    <div class="create-task">
+       
+    </div>
 
     @if (Model.Tasks.Count() > 0)
     {

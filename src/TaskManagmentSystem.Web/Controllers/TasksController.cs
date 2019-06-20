@@ -72,7 +72,8 @@ namespace TaskManagmentSystem.Web.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            return PartialView("_TaskCreatePartial");
+            //return View();
         }
 
         [HttpPost]

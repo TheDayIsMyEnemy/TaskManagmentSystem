@@ -14,11 +14,15 @@ namespace TaskManagmentSystem.Web.ViewModels.Tasks
         [MaxLength(250)]
         public string Description { get; set; }
 
+        [Required]
         public TaskPriority Priority { get; set; }
 
+        [Required]
         public TaskStatus Status { get; set; }
 
+        [Required]
         [DataType(DataType.Date)]
+        [Display(Name = "Due Date")]
         public DateTime? DueDate { get; set; }
     }
 }

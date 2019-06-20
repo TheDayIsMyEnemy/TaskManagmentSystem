@@ -1,0 +1,20 @@
+﻿@model TaskCreateViewModel
+
+<form method="post" asp-action="Create">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <label asp-for="Title"></label>
+    <input asp-for="Title" />
+    <label asp-for="Description"></label>
+    <textarea asp-for="Description"> </textarea>
+    <label asp-for="Status"></label>
+    <select asp-for="Status" asp-items="@Html.GetEnumSelectList<TaskManagmentSystem.Core.Entities.TaskStatus>()">
+        <option selected="selected">Select Status</option>
+    </select>
+    <label asp-for="Priority"></label>
+    <select asp-for="Priority" asp-items="@Html.GetEnumSelectList<TaskPriority>()">
+        <option value="" selected="selected">Select Priority</option>
+    </select>
+    <label asp-for="DueDate"></label>
+    <input asp-for="DueDate" />
+    <button type="submit">Create</button>
+</form>

@@ -101,7 +101,7 @@ body {
     margin: 10px;
     grid-gap: 10px;
     grid-template-columns: 1fr;
-    grid-template-rows: 60px 60px auto 40px;
+    grid-template-rows: 60px 60px 120px auto 40px;
 
 }
 
@@ -182,12 +182,14 @@ body {
     max-height: 25px;
 }
 
+.create-task h2 {
 
+}
 
 .create-task {
     display: grid;
-    grid-template-rows: 50px 1fr;
-    place-items: center;
+
+    
    
 }
 
