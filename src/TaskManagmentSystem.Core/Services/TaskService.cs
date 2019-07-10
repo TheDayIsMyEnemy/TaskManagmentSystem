@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using TaskManagmentSystem.Core.DTOs;
@@ -42,6 +43,9 @@ namespace TaskManagmentSystem.Core.Services
             => await tasks.CountAsync();
 
         public async Task<IEnumerable<TaskDto>> List(int page, int pageSize)
-            => mapper.Map<IEnumerable<TaskDto>>(await tasks.List(page, pageSize));
+            => mapper.Map<IEnumerable<TaskDto>>(await tasks.ListAsync(page, pageSize));
+
+        public async Task<IList<TaskDto>> SearchAsync(int page, int pageSize, string searchText)
+            => mapper.Map<IList<TaskDto>>(await tasks.SearchAsync(page, pageSize, searchText));
     }
 }

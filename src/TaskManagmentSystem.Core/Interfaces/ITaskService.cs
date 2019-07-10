@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using TaskManagmentSystem.Core.DTOs;
@@ -13,5 +14,7 @@ namespace TaskManagmentSystem.Core.Interfaces
         Task<int> CreateTaskAsync(string title, string description, Entities.TaskStatus status, TaskPriority priority, DateTime? dueDate);
         Task<int> GetTaskCountAsync();
         Task<IEnumerable<TaskDto>> List(int page, int pageSize);
+        Task<IList<TaskDto>> SearchAsync(int page, int pageSize, string searchText);
+
     }
 }

@@ -2,7 +2,7 @@
 
 namespace TaskManagmentSystem.Web.ViewModels
 {
-    public class PaginationInfoViewModel
+    public class PaginationViewModel
     {
         public int TotalItems { get; set; }
 

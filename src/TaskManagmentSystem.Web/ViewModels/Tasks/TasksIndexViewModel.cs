@@ -10,8 +10,8 @@ namespace TaskManagmentSystem.Web.ViewModels.Tasks
     {
         public IEnumerable<TaskDto> Tasks { get; set; }
 
-        public PaginationInfoViewModel PaginationInfo { get; set; }
+        public PaginationViewModel Pagination { get; set; }
 
-        public SearchInfoViewModel SearchInfo { get; set; } = new SearchInfoViewModel();
+        public SearchViewModel Search { get; set; }
     }
 }

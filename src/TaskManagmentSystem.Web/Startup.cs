@@ -55,6 +55,7 @@ namespace TaskManagmentSystem.Web
             services.AddRouting(options =>
             {
                 options.LowercaseUrls = true;
+                options.LowercaseQueryStrings = true;
             });
 
             services.AddMvc(options => 

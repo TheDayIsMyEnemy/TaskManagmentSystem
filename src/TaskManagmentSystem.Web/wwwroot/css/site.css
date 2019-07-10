@@ -1,9 +1,6 @@
 ﻿:root {
     --primary: #A2BDCA;
     --shadow: 0 1px 5px rgb(153, 128, 114, 0.8);
-    /*--main: rgb(143, 212, 217);
-    --header: rgb(100, 140, 166);
-    --sidenav: #394263;*/
     --taskItemColor: #6e4c7f;
     --main: #a68ecf;
     --header: #f5e4ef;
@@ -21,7 +18,7 @@ html {
 }
 
 body {
-    background: var(--primary);
+    background: var(--main);
     margin: 0;
 }
 
@@ -29,15 +26,8 @@ body {
     display: grid;
     grid-template-columns: 180px 1fr;
     grid-template-rows: 120px 1fr;
-    grid-template-areas:
-        "header header"
-        "sidenav main";
-   
+    grid-template-areas: "header header" "sidenav main";
     height: 100vh;
-    /*grid-gap: 10px;
-    grid-template-columns: minmax(12rem, 6rem)  1fr 1fr 1fr;
-    grid-template-rows: auto;
-    grid-template-areas: "header header header header" "nav main main main" "nav main main main" "nav main main main";*/
 }
 
 .header {
@@ -47,7 +37,6 @@ body {
     grid-template-rows: 1fr;
     background-color: var(--header);
     box-shadow: var(--shadow);
-
 }
 
     .header form {
@@ -62,7 +51,6 @@ body {
 .main {
     display: grid;
     grid-area: main;
-    background-color: var(--main);
     box-shadow: var(--shadow);
 }
 
@@ -80,36 +68,29 @@ body {
         padding: 0;
         display: grid;
         list-style: none;
-
     }
-
-
-
-    .sidenav a {
-        text-align: center; 
-        display: block;
-        text-decoration: none;
-        padding: 0.7rem;
-    }
-        .sidenav a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-        }
 
 .tasks {
     display: grid;
     margin: 10px;
     grid-gap: 10px;
     grid-template-columns: 1fr;
-    grid-template-rows: 60px 60px 120px auto 40px;
-
 }
 
-.topBar {
-    display: grid;
-    background: #ceb9ad;
-    box-shadow: var(--shadow);
+
+
+
+.sidenav a {
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    padding: 0.7rem;
 }
+
+    .sidenav a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+    }
 
 .taskList {
     display: grid;
@@ -117,10 +98,7 @@ body {
     margin: 0;
     padding: 0;
     list-style: none;
-
 }
-
-
 
     .taskList a {
         background-color: var(--taskItemColor);
@@ -134,19 +112,19 @@ body {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
         grid-template-rows: minmax(80px, 1fr);
-        
     }
 
-    .taskItem {
-        display: grid;
-        grid-gap: 0.5rem;
-        padding: 1rem;
-       
-    }
+.taskItem {
+    display: grid;
+    grid-gap: 0.5rem;
+    padding: 1rem;
+}
 
-    .taskList a:hover {
-        background: #246f87;
-    }
+.taskList a:hover {
+    background: #246f87;
+}
+
+
 
 .search-container input[type=text] {
     background-color: #42899F;
@@ -166,93 +144,93 @@ body {
     cursor: pointer;
 }
 
-.search-container button:hover {
-    background: #ccc;
-}
+    .search-container button:hover {
+        background: #ccc;
+    }
 
 .btn {
     background: #42899F;
     color: white;
     /* 1rem = 16px */
-    padding: 0.6rem 1.3rem; 
+    padding: 0.6rem 1.3rem;
     text-decoration: none;
     border: 0;
     box-shadow: var(--shadow);
-    max-width: 100px;
-    max-height: 25px;
+    max-width: 120px;
 }
 
-.create-task h2 {
+/*#region Modal*/
 
-}
-
-.create-task {
+.modal form {
     display: grid;
-
-    
-   
+    place-content: center;
 }
 
-    h2 {
-        margin: 0;
-        padding: 0;
-        line-height: 1.6rem;
-    }
-
-    .create-task form {
-        display: grid;
-        place-content: center;
-           
-    }
-
-    .create-task form label {
+    .modal form label {
         margin-top: 1rem;
     }
 
-        .create-task form button {
-            background: #42899F;
-            color: white;
-            border: 0;
-            justify-self: center;
-            margin-top: 1rem;
-            padding: 1rem;
+    .modal form button {
+        background: #42899F;
+        color: white;
+        border: 0;
+        justify-self: center;
+        margin-top: 1rem;
+        padding: 1rem;
+    }
 
-        }
+/*#endregion*/
+
+/*#region Pagination */
 
 .pagination {
     display: grid;
-    grid-template-columns: repeat(8, 55px);
+    grid-template-columns: repeat(10, 50px);
+    height: 45px;
     /*justify-content: center;*/
 }
 
     .pagination a {
-        background: #04232D;
-        border-style: solid;
-        border-width: 1px;
-        border-color: #a5968e;
-        display: block;
+        border: 1px solid #ccc;
+        color: black;
+        padding: 10px 18px;
         text-decoration: none;
-        padding: 8px 16px;
-        box-shadow: var(--shadow);
-        text-align: center;
-        transition: background-color .3s;
     }
+
+        .pagination a:first-child {
+            border-radius: 6px 0 0 6px;
+        }
+
+        .pagination a:last-child {
+            border-radius: 0 6px 6px 0;
+        }
+
+
 
         .pagination a.selected {
             background: #144e60;
         }
 
         .pagination a:hover:not(.selected) {
-            background-color: #56aac4;
+            background-color: #ddd;
         }
 
-.pagination a.disabled {
-    pointer-events: none;
-    cursor: default;
-}
+        .pagination a.disabled {
+            pointer-events: none;
+            cursor: default;
+        }
+
+/*#endregion */
 
 .logo {
     margin-left: 20px;
     max-height: 120px;
     max-width: 140px;
+}
+
+.searchInfo {
+    display: grid;
+    grid-gap: 10px;
+    margin: 10px;
+    grid-template-rows: 85px 50px 50px 1fr;
 }

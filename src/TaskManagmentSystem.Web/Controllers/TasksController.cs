@@ -27,28 +27,39 @@ namespace TaskManagmentSystem.Web.Controllers
             this.taskService = taskService;
         }
 
-        public async Task<IActionResult> Search(SearchInfoViewModel searchInfo)
-        {
-            return PartialView("_TaskListPartial", await taskService.List(1, 6));
-        }
-
-        public async Task<IActionResult> Index(int page = 1)
+        private async Task<PaginationViewModel> GetPaginationViewModel(int page)
         {
             int taskCount = await taskService.GetTaskCountAsync();
             int totalPages = (int)Math.Ceiling((decimal)taskCount / TasksPageSize);
             page = page < 1 ? 1 : page > totalPages ? totalPages : page;
 
-            var paginationInfo = new PaginationInfoViewModel
+            var paginationInfo = new PaginationViewModel
             {
                 ItemsPerPage = TasksPageSize,
                 CurrentPage = page,
                 TotalItems = taskCount
             };
 
+            return paginationInfo;
+        }
+
+        public async Task<IActionResult> Search(SearchViewModel search)
+        {
+            search.Tasks = await taskService.SearchAsync(1, TasksPageSize, search.Q);
+            return View(search);
+        }
+
+        public async Task<IActionResult> Index(int page = 1)
+        {       
+            if (page < 1)
+            {
+                page = 1;
+            }
+
             var result = new TasksIndexViewModel
             {
                 Tasks = await taskService.List(page, TasksPageSize),
-                PaginationInfo = paginationInfo
+                Pagination = await GetPaginationViewModel(page)
             };
 
             return View(result);
@@ -77,13 +88,23 @@ namespace TaskManagmentSystem.Web.Controllers
         }
 
         [HttpPost]
-        [ValidateModel]
+        //[ValidateModel]
         public async Task<IActionResult> Create(TaskCreateViewModel model)
         {
-            int taskId = await taskService
-                .CreateTaskAsync(model.Title, model.Description, model.Status, model.Priority, model.DueDate);
+            if (!ModelState.IsValid)
+            {
+                return PartialView("_TaskCreatePartial", model);
+            }
 
-            return RedirectToAction(nameof(Details), new { id = taskId });
+            int taskId = await taskService
+                .CreateTaskAsync(model.Title,
+                                 model.Description,
+                                 model.Status,
+                                 model.Priority,
+                                 model.DueDate);
+
+            //return RedirectToAction(nameof(Details), new { id = taskId });
+            return PartialView("_TaskListPartial", await taskService.List(1, TasksPageSize));
         }
 
         public IActionResult Error()

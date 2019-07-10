@@ -1,0 +1,10 @@
+﻿@model  SearchViewModel
+
+<div class="search-container">
+    <form asp-action="Search" method="get">
+        <input asp-for="Q" placeholder="Search" asp-action="Search" />
+        <button type="submit">
+            <i class="fa fa-search"></i>
+        </button>
+    </form>
+</div>

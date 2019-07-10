@@ -3,43 +3,15 @@
 @{
     ViewData["Title"] = "Tasks";
 }
-
-<script>
-
-    $(document).ready(function () {
-        var element = $('create-task');
-        $('.btn').click(function (event) {
-            var url = $(this).data('url');
-            $.get(url).done(function (data) {
-                console.log(data);
-                element.html(data);
-                element.show();
-            });
-        });
-    });
-
-
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<script src="~/js/modal.js"></script>
 
 <div class="tasks">
-    <div class="search-container">
-        <form asp-action="Search">
-            <input asp-for="SearchInfo.SearchText" placeholder="Search" asp-action="Search" />
-            <button type="submit">
-                <i class="fa fa-search"></i>
-            </button>
-            <div>
-                <label></label>
-            </div>
-        </form>
-    </div>
 
+    @await Html.PartialAsync("_SearchPartial", Model.Search)
 
-    <button class="btn" data-url="@Url.Action("Create")">Create task</button>
-
-    <div class="create-task">
-       
-    </div>
+    <button class="btn" data-toggle="ajax-modal" data-url="@Url.Action("Create")">Create task</button>
 
     @if (Model.Tasks.Count() > 0)
     {
@@ -49,8 +21,8 @@
     {
         <p>There are no tasks.</p>
     }
-    @if (Model.PaginationInfo.TotalPages > 1)
+    @if (Model.Pagination.TotalPages > 1)
     {
-        @await Html.PartialAsync("_PaginationPartial", Model.PaginationInfo)
+        @await Html.PartialAsync("_PaginationPartial", Model.Pagination)
     }
 </div>
