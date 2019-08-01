@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagmentSystem.Core", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagmentSystem.Common", "src\TaskManagmentSystem.Common\TaskManagmentSystem.Common.csproj", "{CB6BBD10-85A3-4673-998F-67BC47F3B805}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagmentSystem.Tests", "TaskManagmentSystem.Tests\TaskManagmentSystem.Tests.csproj", "{8B5DD1E6-5357-415D-9242-3A0FA02A6546}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagmentSystem.Tests", "src\TaskManagmentSystem.Tests\TaskManagmentSystem.Tests.csproj", "{8B5DD1E6-5357-415D-9242-3A0FA02A6546}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
