@@ -20,7 +20,7 @@
     <div class="container">
         <header class="header">
             <a asp-action="Index" asp-controller="Home">
-                <img src="~/images/logo.png" alt="logo" class="logo" />
+                @*<img src="~/images/logo.png" alt="logo" class="logo" />*@
             </a>
             <form method="post" asp-action="Logout" asp-controller="Account">
                 <div>
@@ -33,7 +33,8 @@
         </header>
         <aside class="sidenav">
             <ul>
-                <li><a asp-action="Index" asp-controller="Tasks">Tasks</a></li>
+                <li><a asp-action="Index" asp-controller="Tasks" asp-route-page="1">Tasks</a></li>
+                <li><a asp-action="Index" asp-controller="Users">Users</a></li>
                 <li><a asp-action="Index" asp-controller="Chat">Chat</a></li>
                 <li><a href="#">Admin</a></li>
             </ul>

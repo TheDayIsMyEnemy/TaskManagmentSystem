@@ -14,6 +14,7 @@ using TaskManagmentSystem.Web.ViewModels.Tasks;
 using TaskManagmentSystem.Core.DTOs;
 using TaskManagmentSystem.Web.ViewModels;
 using static TaskManagmentSystem.Web.Constants;
+using TaskManagmentSystem.Web.ViewModels.Search;
 
 namespace TaskManagmentSystem.Web.Controllers
 {
@@ -30,23 +31,17 @@ namespace TaskManagmentSystem.Web.Controllers
         private async Task<PaginationViewModel> GetPaginationViewModel(int page)
         {
             int taskCount = await taskService.GetTaskCountAsync();
-            int totalPages = (int)Math.Ceiling((decimal)taskCount / TasksPageSize);
+            int totalPages = (int)Math.Ceiling((decimal)taskCount / TasksPerPage);
             page = page < 1 ? 1 : page > totalPages ? totalPages : page;
 
             var paginationInfo = new PaginationViewModel
             {
-                ItemsPerPage = TasksPageSize,
+                ItemsPerPage = TasksPerPage,
                 CurrentPage = page,
                 TotalItems = taskCount
             };
 
             return paginationInfo;
-        }
-
-        public async Task<IActionResult> Search(SearchViewModel search)
-        {
-            search.Tasks = await taskService.SearchAsync(1, TasksPageSize, search.Q);
-            return View(search);
         }
 
         public async Task<IActionResult> Index(int page = 1)
@@ -58,8 +53,9 @@ namespace TaskManagmentSystem.Web.Controllers
 
             var result = new TasksIndexViewModel
             {
-                Tasks = await taskService.List(page, TasksPageSize),
-                Pagination = await GetPaginationViewModel(page)
+                Tasks = await taskService.List(page, TasksPerPage),
+                Pagination = await GetPaginationViewModel(page),
+                Search = new SearchViewModel()
             };
 
             return View(result);
@@ -104,7 +100,7 @@ namespace TaskManagmentSystem.Web.Controllers
                                  model.DueDate);
 
             //return RedirectToAction(nameof(Details), new { id = taskId });
-            return PartialView("_TaskListPartial", await taskService.List(1, TasksPageSize));
+            return PartialView("_TaskListPartial", await taskService.List(1, TasksPerPage));
         }
 
         public IActionResult Error()

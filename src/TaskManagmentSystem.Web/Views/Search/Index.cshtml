@@ -1,0 +1,38 @@
+﻿@model SearchViewModel
+
+@{
+    ViewData["Title"] = $"Tasks containing '{Model.Query}'";
+}
+
+<div class="search-results">
+    @if (Model == null || String.IsNullOrWhiteSpace(Model.Query))
+    {
+        <div>
+            <h1>Search</h1>
+        </div>
+        @await Html.PartialAsync("_SearchPartial", Model)
+
+    }
+    else
+    {
+        <div>
+            <h1>Search Results</h1>
+            <p>Results for @Model.Query</p>
+        </div>
+        @await Html.PartialAsync("_SearchPartial", Model)
+
+        <div>
+            <p>@(Model.Tasks == null ? 0 : Model.Tasks.Count) results</p>
+        </div>
+
+        @await Html.PartialAsync("_TaskListPartial", Model.Tasks)
+    }
+</div>
+
+
+
+
+
+
+
+

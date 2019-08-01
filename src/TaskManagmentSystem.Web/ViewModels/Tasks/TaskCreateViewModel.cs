@@ -18,7 +18,7 @@ namespace TaskManagmentSystem.Web.ViewModels.Tasks
         public TaskPriority Priority { get; set; }
 
         [Required]
-        public TaskStatus Status { get; set; }
+        public TaskState Status { get; set; }
 
         [Required]
         [DataType(DataType.Date)]

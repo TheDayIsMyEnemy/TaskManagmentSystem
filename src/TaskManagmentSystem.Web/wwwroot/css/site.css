@@ -13,7 +13,7 @@ a {
 
 html {
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Oswald', sans-serif;
     line-height: 1.4rem;
 }
 
@@ -25,9 +25,10 @@ body {
 .container {
     display: grid;
     grid-template-columns: 180px 1fr;
-    grid-template-rows: 120px 1fr;
-    grid-template-areas: "header header" "sidenav main";
-    height: 100vh;
+    grid-template-rows: 75px 1fr;
+    grid-template-areas: "header header" 
+                        "sidenav main";
+    min-height: 100vh;
 }
 
 .header {
@@ -52,12 +53,13 @@ body {
     display: grid;
     grid-area: main;
     box-shadow: var(--shadow);
+    
 }
 
 .sidenav {
-    display: grid;
+
     grid-area: sidenav;
-    grid-template-rows: repeat(4, 180px);
+   
     background-color: var(--sidenav);
     box-shadow: #2184a0;
 }
@@ -75,6 +77,7 @@ body {
     margin: 10px;
     grid-gap: 10px;
     grid-template-columns: 1fr;
+    grid-template-rows: 150px 75px auto 50px;
 }
 
 
@@ -98,6 +101,7 @@ body {
     margin: 0;
     padding: 0;
     list-style: none;
+  
 }
 
     .taskList a {
@@ -110,21 +114,26 @@ body {
         text-decoration: none;
         padding: 1rem 0.5rem;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        grid-template-rows: minmax(80px, 1fr);
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+
+       
     }
 
 .taskItem {
-    display: grid;
-    grid-gap: 0.5rem;
     padding: 1rem;
 }
 
 .taskList a:hover {
     background: #246f87;
 }
+/*#region Search*/
 
-
+.search-container form {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+ 
 
 .search-container input[type=text] {
     background-color: #42899F;
@@ -136,8 +145,6 @@ body {
 
 .search-container button {
     padding: 6px 10px;
-    margin-top: 8px;
-    margin-right: 16px;
     background: #ddd;
     font-size: 17px;
     border: none;
@@ -148,16 +155,13 @@ body {
         background: #ccc;
     }
 
-.btn {
-    background: #42899F;
-    color: white;
-    /* 1rem = 16px */
-    padding: 0.6rem 1.3rem;
-    text-decoration: none;
-    border: 0;
-    box-shadow: var(--shadow);
-    max-width: 120px;
+.search-results {
+    display: grid;
+    grid-gap: 10px;
+    margin: 10px;
+    justify-items: center;
 }
+/*#endregion*/
 
 /*#region Modal*/
 
@@ -186,7 +190,7 @@ body {
 .pagination {
     display: grid;
     grid-template-columns: repeat(10, 50px);
-    height: 45px;
+    max-height: 45px;
     /*justify-content: center;*/
 }
 
@@ -222,15 +226,22 @@ body {
 
 /*#endregion */
 
-.logo {
-    margin-left: 20px;
-    max-height: 120px;
-    max-width: 140px;
+.btn {
+    background: #42899F;
+    color: white;
+    /* 1rem = 16px */
+    padding: 0.6rem 1.3rem;
+    text-decoration: none;
+    border: 0;
+    box-shadow: var(--shadow);
+    max-width: 110px;
+    max-height: 50px;
 }
 
-.searchInfo {
-    display: grid;
-    grid-gap: 10px;
-    margin: 10px;
-    grid-template-rows: 85px 50px 50px 1fr;
+.logo {
+    max-height: 100px;
+}
+
+.chat {
+    display: grid;  
 }

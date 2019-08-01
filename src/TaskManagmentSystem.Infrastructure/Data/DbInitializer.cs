@@ -106,7 +106,7 @@ namespace TaskManagmentSystem.Infrastructure.Data
                             Description = "Create admin, moderator and other roles",
                             DueDate = DateTime.Now.AddDays(10),
                             Priority = TaskPriority.Critical,
-                            Status = Core.Entities.TaskStatus.Active,
+                            State = Core.Entities.TaskState.Active,
                             CreatorId = user.Id
                         }, new AppTask
                         {
@@ -115,7 +115,7 @@ namespace TaskManagmentSystem.Infrastructure.Data
                             Description = "No description",
                             DueDate = DateTime.Now.AddDays(20),
                             Priority = TaskPriority.Major,
-                            Status = Core.Entities.TaskStatus.Fixed,
+                            State = Core.Entities.TaskState.Fixed,
                             CreatorId = user.Id
                         }, new AppTask
                         {
@@ -124,7 +124,7 @@ namespace TaskManagmentSystem.Infrastructure.Data
                             Description = "No description",
                             DueDate = DateTime.Now.AddDays(30),
                             Priority = TaskPriority.Minor,
-                            Status = Core.Entities.TaskStatus.InProgress,
+                            State = Core.Entities.TaskState.InProgress,
                             CreatorId = user.Id
                         }, new AppTask
                         {
@@ -133,7 +133,7 @@ namespace TaskManagmentSystem.Infrastructure.Data
                             Description = "No description",
                             DueDate = DateTime.Now.AddDays(40),
                             Priority = TaskPriority.Normal,
-                            Status = Core.Entities.TaskStatus.Sandbox,
+                            State = Core.Entities.TaskState.Sandbox,
                             CreatorId = user.Id
                         }, new AppTask
                         {
@@ -142,7 +142,7 @@ namespace TaskManagmentSystem.Infrastructure.Data
                             Description = "No description",
                             DueDate = DateTime.Now.AddDays(7),
                             Priority = TaskPriority.ShowStopper,
-                            Status = Core.Entities.TaskStatus.Verified,
+                            State = Core.Entities.TaskState.Verified,
                             CreatorId = user.Id
                         }
                         , new AppTask
@@ -152,7 +152,7 @@ namespace TaskManagmentSystem.Infrastructure.Data
                             Description = "No description",
                             DueDate = DateTime.Now.AddDays(14),
                             Priority = TaskPriority.Critical,
-                            Status = Core.Entities.TaskStatus.WithErorr,
+                            State = Core.Entities.TaskState.WithErorr,
                             CreatorId = user.Id
                         }
                         );

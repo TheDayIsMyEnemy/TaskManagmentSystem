@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagmentSystem.Infrast
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagmentSystem.Core", "src\TaskManagmentSystem.Core\TaskManagmentSystem.Core.csproj", "{2A3C809C-2E8D-4DD5-B20B-80F3E68D8C70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagmentSystem.Common", "src\TaskManagmentSystem.Common\TaskManagmentSystem.Common.csproj", "{CB6BBD10-85A3-4673-998F-67BC47F3B805}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagmentSystem.Common", "src\TaskManagmentSystem.Common\TaskManagmentSystem.Common.csproj", "{CB6BBD10-85A3-4673-998F-67BC47F3B805}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagmentSystem.Tests", "TaskManagmentSystem.Tests\TaskManagmentSystem.Tests.csproj", "{8B5DD1E6-5357-415D-9242-3A0FA02A6546}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{CB6BBD10-85A3-4673-998F-67BC47F3B805}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB6BBD10-85A3-4673-998F-67BC47F3B805}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB6BBD10-85A3-4673-998F-67BC47F3B805}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B5DD1E6-5357-415D-9242-3A0FA02A6546}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B5DD1E6-5357-415D-9242-3A0FA02A6546}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B5DD1E6-5357-415D-9242-3A0FA02A6546}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B5DD1E6-5357-415D-9242-3A0FA02A6546}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

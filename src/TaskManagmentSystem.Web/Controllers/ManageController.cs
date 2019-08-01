@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using TaskManagmentSystem.Core.Entities;
 using TaskManagmentSystem.Web.Models;
-using TaskManagmentSystem.Web.Models.ManageViewModels;
+using TaskManagmentSystem.Web.ViewModels.Manage;
 using TaskManagmentSystem.Web.Services;
 
 namespace TaskManagmentSystem.Web.Controllers

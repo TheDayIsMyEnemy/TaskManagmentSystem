@@ -1,6 +1,6 @@
 ﻿namespace TaskManagmentSystem.Core.Entities
 {
-    public enum TaskStatus
+    public enum TaskState
     {
         Fixed = 1,
         Active = 2,

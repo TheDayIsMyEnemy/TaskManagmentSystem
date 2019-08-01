@@ -1,10 +1,31 @@
-﻿@model  SearchViewModel
+﻿@model SearchViewModel
 
 <div class="search-container">
-    <form asp-action="Search" method="get">
-        <input asp-for="Q" placeholder="Search" asp-action="Search" />
-        <button type="submit">
-            <i class="fa fa-search"></i>
-        </button>
+    <form asp-controller="Search" method="get">
+        <div>
+            <input asp-for="Query" placeholder="Search" />
+            <button type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+        @*<div class="taskFilters">*@
+            <div>
+                <label asp-for="Title"></label>
+                <checkbox name="Title" checked="@Model.Title"></checkbox>
+            </div>
+            <div>
+                <label asp-for="Description"></label>
+                <checkbox name="Description" checked="@Model.Description"></checkbox>
+            </div>
+            <div>
+                <label asp-for="TaskPriority"></label>
+                <select asp-for="TaskPriority" asp-items="@Html.GetEnumSelectList<TaskPriority>()"></select>
+            </div>
+            <div>
+                <label asp-for="TaskState"></label>
+                <select asp-for="TaskState" asp-items="@Html.GetEnumSelectList<TaskState>()"></select>
+            </div>
+        @*</div>*@
     </form>
 </div>
+

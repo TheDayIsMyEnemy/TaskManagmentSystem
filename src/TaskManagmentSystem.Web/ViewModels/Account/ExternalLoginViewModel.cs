@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace TaskManagmentSystem.Web.Models.AccountViewModels
+namespace TaskManagmentSystem.Web.ViewModels.Account
 {
     public class ExternalLoginViewModel
     {

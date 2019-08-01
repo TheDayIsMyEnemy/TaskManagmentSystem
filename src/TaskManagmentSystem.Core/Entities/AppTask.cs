@@ -11,7 +11,7 @@ namespace TaskManagmentSystem.Core.Entities
 
         public TaskPriority Priority { get; set; }
 
-        public TaskStatus Status { get; set; } 
+        public TaskState State { get; set; } 
 
         public DateTime? DueDate { get; set; }
 

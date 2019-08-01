@@ -10,13 +10,15 @@
         <label asp-for="Description"></label>
         <textarea asp-for="Description"> </textarea>
         <label asp-for="Status"></label>
-        <select asp-for="Status" asp-items="@Html.GetEnumSelectList<TaskManagmentSystem.Core.Entities.TaskStatus>()">
+        <select asp-for="Status" asp-items="@Html.GetEnumSelectList<TaskState>()">
             <option selected="selected">Select Status</option>
         </select>
         <label asp-for="Priority"></label>
         <select asp-for="Priority" asp-items="@Html.GetEnumSelectList<TaskPriority>()">
             <option value="" selected="selected">Select Priority</option>
         </select>
+        @*<label asp-for="Asignee"></label>*@
+     
         <label asp-for="DueDate"></label>
         <input asp-for="DueDate" />
         <button type="submit" data-save="modal">Create</button>

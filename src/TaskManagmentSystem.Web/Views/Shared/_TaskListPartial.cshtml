@@ -16,16 +16,15 @@
                 </div>
                 <div class="taskItem">
                     <div>
-                        Priority: @task.Priority
-                        
+                        Priority: @task.Priority     
                     </div>
                     <div>
-                        Due: @(task.DueDate.HasValue ? task.DueDate.Value.ToString("MM/dd/yyyy HH:mm") : "Whenever")
+                        Due: @(task.DueDate.HasValue ? task.DueDate.Value.ToString("MM/dd/yyyy") : "Whenever")
                     </div>
                 </div>
                 <div class="taskItem">
                     <div>
-                        Status: @task.Status.ToString()
+                        Status: @task.State.ToString()
                     </div>
                     <div>
                         Asignee: Test

@@ -21,13 +21,13 @@ namespace TaskManagmentSystem.Core.Services
             this.tasks = tasks;
         }
 
-        public async Task<int> CreateTaskAsync(string title, string description, Entities.TaskStatus status, TaskPriority priority, DateTime? dueDate)
+        public async Task<int> CreateTaskAsync(string title, string description, Entities.TaskState status, TaskPriority priority, DateTime? dueDate)
         {
             AppTask task = new AppTask
             {
                 Title = title,
                 Description = description,
-                Status = status,
+                State = status,
                 Priority = priority,
                 DueDate = dueDate
             };
@@ -47,5 +47,8 @@ namespace TaskManagmentSystem.Core.Services
 
         public async Task<IList<TaskDto>> SearchAsync(int page, int pageSize, string searchText)
             => mapper.Map<IList<TaskDto>>(await tasks.SearchAsync(page, pageSize, searchText));
+
+        public async Task<IList<TaskDto>> SearchAsync(int page, int pageSize, string searchText, bool title, bool description, TaskPriority priority, TaskState state, DateTime? dueDate, DateTime? created, int? creatorId)
+            => mapper.Map<IList<TaskDto>>(await tasks.SearchAsync(page, pageSize, searchText, title, description, priority, state, dueDate, created, creatorId));
     }
 }
